@@ -1,0 +1,14 @@
+<nav th:fragment="nav" class="navbar navbar-expand-lg bg-white" xmlns:sec="http://www.thymeleaf.org">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/home}">Menú</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATOR')"><a class="nav-link" aria-current="page" th:href="@{/administrator/manage-user}">Gestionar usuarios</a></li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATIVE')"><a class="nav-link" aria-current="page" th:href="@{/administrative/manage-user}">Gestionar clientes</a></li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMINISTRATIVE')"><a class="nav-link" aria-current="page" href="#">Gestionar centros deportivos</a></li>
+                <li class="nav-item" sec:authorize="hasAuthority('CLIENT')"><a class="nav-link" aria-current="page" href="#">Arrendar centro deportivo</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

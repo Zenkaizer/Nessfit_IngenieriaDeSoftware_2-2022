@@ -1,0 +1,65 @@
+@startuml
+skin rose
+package cl.nessfit.web{
+    package model #DDDDDD{
+        class Role{
+            -{static} serialVersionUID: long
+            -id: int
+            -name: String
+            +getID(): int
+            +getName(): String
+            +setID(id:int): void
+            +setName(name:String): void
+        }
+        class User{
+            -{static} serialVersionUID: long
+            -rut: String
+            -firstName: String
+            -lastName: String
+            -phone: long
+            -email: String
+            -status: int
+            -password: String
+            -role: Role
+            +getRut(): String
+            +getFirstName(): String
+            +getLastName(): String
+            +getPhone(): long
+            +getEmail(): String
+            +getStatus(): int
+            +getPassword(): String
+            +getRole(): Role
+            +setRut(rut:String): void
+            +setFirstName(firstName:String): void
+            +setLastName(lastName:String): void
+            +setPhone(phone:long): void
+            +setEmail(email:String): void
+            +setStatus(status:int): void
+            +setPassword(password:String): void
+            +setRole(role:Role): void
+        }
+        User *--> Role
+    }
+
+    package repository #DDDDDD{
+        interface UserRepositoryInterface <<interface>>{
+            +findByRut(rut:String): User
+            +findByRoleId(id:int): List
+            +findAll(): List
+        }
+    }
+
+    package service #DDDDDD{
+        interface UserServiceInterface <<interface>>{
+            +save(user:User): void
+            +searchByRut(rut:String): User
+            +getAdministrativos(): List
+            +getUsers(): List
+        }
+        class UserServiceImpl implements UserServiceInterface{
+            -userRepository: UserRepositoryInterface
+        }
+        UserServiceImpl *--> UserRepositoryInterface
+    }
+}
+@enduml

@@ -1,0 +1,18 @@
+@media screen {
+    main .navbar .container-fluid, main .navbar-expand-lg .navbar-collapse, main .navbar-expand-lg .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    main .navbar {
+        width: 12.5rem;
+        max-width: 12.5rem;
+        min-width: 12.5rem;
+        height: calc(100vh - 4rem);
+        align-items: flex-start;
+    }
+
+    main .navbar-brand {
+        margin-left: 0.5rem;
+    }
+}
